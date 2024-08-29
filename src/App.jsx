@@ -17,6 +17,7 @@ function App() {
 
   return (
     <div className="responsive-table">
+      <p>User table</p>
       <table>
         <thead>
           <tr>
