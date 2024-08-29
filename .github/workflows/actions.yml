@@ -43,6 +43,6 @@ jobs:
           aws s3 cp \
             --recursive \
             --region  ${{ secrets.AWS_REGION }} \
-            dist s3://app-clancommerce-dev
+            dist s3://aws-project-utiva
             
             
