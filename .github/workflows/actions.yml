@@ -1,8 +1,8 @@
-name: Deploy to 
+name: Deploy to Develop
 on:
   push:
     branches:
-      - main
+      - develop
 
 jobs:
 
@@ -23,7 +23,7 @@ jobs:
           path: node_modules
           key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.OS }}-build-
+            ${{ runner.OS }-build-
             ${{ runner.OS }}-
 
       - name: Install
@@ -37,8 +37,12 @@ jobs:
 
       - name: Deploy
         env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.S3_GITHUB_DEPLOY_ACCESS_ID }}  # Ensure this secret is correctly set
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_GITHUB_DEPLOY_SECRET_KEY }}  # Ensure this secret is correctly set
-          run: |
-            aws s3 cp --recursive --region ${{ secrets.AWS_REGION }} dist s3://aws-project-utiva
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_GITHUB_DEPLOY_ACCESS_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_GITHUB_DEPLOY_SECRET_KEY }}
+        run: |
+          aws s3 cp \
+            --recursive \
+            --region  ${{ secrets.AWS_REGION }} \
+            dist s3://app-clancommerce-dev
+            
             
