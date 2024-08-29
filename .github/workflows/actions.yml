@@ -27,13 +27,13 @@ jobs:
             ${{ runner.OS }}-
 
       - name: Install
-        run: npm install --force
+        run: npm install
 
         # - name: Lint
         # run: npm run lint
 
       - name: Build
-        run: npm run build:dev
+        run: npm run build
 
       - name: Deploy
         env:
