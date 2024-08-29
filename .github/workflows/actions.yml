@@ -40,8 +40,5 @@ jobs:
             AWS_ACCESS_KEY_ID: ${{ secrets.S3_GITHUB_DEPLOY_ACCESS_ID }}  # Ensure this secret is correctly set
             AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_GITHUB_DEPLOY_SECRET_KEY }}  # Ensure this secret is correctly set
           run: |
-        run: |
-          aws s3 cp  aws s3 cp --recursive --region ${{ secrets.AWS_REGION }} dist s3://aws-project-utiva
-          
-            
+            aws s3 cp --recursive --region ${{ secrets.AWS_REGION }} dist s3://aws-project-utiva
             
